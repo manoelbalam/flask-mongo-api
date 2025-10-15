@@ -14,9 +14,9 @@ class orderMongo:
 			orders = list(orderMongo.collectionOrder.find())
 			for order in orders:
 				order['_id'] = str(order['_id'])
-			return jsonify(orders)
+			return jsonify(orders), 200
 		except Exception as e:
-			return 'Error: an error ecountred in the orderMongo:', 500
+			return 'Error:orderDBA:listOrders', 500
 
 	@staticmethod
 	def createOrder(body):
@@ -24,4 +24,4 @@ class orderMongo:
 			order = orderMongo.collectionOrder.insert_one(body)
 			return	jsonify({"Message": "Order created successfully!", "id":str(order.inserted_id)}) , 201
 		except Exception as e:
-			return 'Error: an error ecountred in the orderMongo:', 500
+			return 'Error:orderDBA:createOrder', 500
