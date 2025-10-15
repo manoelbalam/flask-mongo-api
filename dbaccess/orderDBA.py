@@ -7,7 +7,6 @@ class orderMongo:
 	db = client['flask-mongo-api']
 	collectionOrder = db['order']
 
-
 	@staticmethod
 	def listOrders():
 		try:
