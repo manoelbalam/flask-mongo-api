@@ -8,7 +8,7 @@ class orderLogic():
 		try:
 			return orderMongo.listOrders()
 		except Exception as e:
-			return 'Error:listOrders: an error ecountred in the order logic:', 500
+			return 'Error:orderLogic:listOrders:', 500
 
 	@staticmethod
 	def createOrder(body):
@@ -18,4 +18,4 @@ class orderLogic():
 			  return  jsonify({"error": "customer_name field is mandatory"}) , 400
 			return orderMongo.createOrder(body)
 		except Exception as e:
-			return 'Error:createOrder: an error ecountred in the order logic:', 500
+			return 'Error:orderLogic:createOrder:', 500
