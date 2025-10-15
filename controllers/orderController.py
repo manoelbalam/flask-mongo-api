@@ -38,14 +38,21 @@ def createOrder():
     parameters:
       - in: body
         name: body
-        description: 'Specting a object like: {"customer_name" : "test" }'
+        description: 'Specting a object like: {"customer_name" : "customer_name" }'
         schema:
-          $ref: '#/definitions/Order'
+          $ref: 'Object'
     responses:
       201:
         description: The Order has been created
         schema:
-          $ref: '#/definitions/Order'
+          type: array
+          items:
+            type: object
+            properties:
+              Message:
+                type: string
+              id:
+                type: string
     """
 	try:
 		body = request.get_json()
