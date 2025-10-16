@@ -19,14 +19,14 @@ class orderLogic():
     # pdb.set_trace()
     try:
       if 'customer_name' not in body:
-        return  jsonify({"error": "customer_name field is mandatory"}) , 400
+        return  jsonify({"error": "customer_name field is mandatory"}) , 404
       body['status'] = 'inProgress'
       return orderMongo.createOrder(body)
     except Exception as e:
       return jsonify({"Error": str(e)}), 500
 
   @staticmethod
-  def getOrderByID(order_id, body):
+  def getOrderByID(order_id):
     # Basic Logic
     try:
       if ObjectId(order_id):
