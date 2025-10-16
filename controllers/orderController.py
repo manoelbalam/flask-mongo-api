@@ -40,7 +40,7 @@ def listOrders():
   try:
     return orderLogic.listOrders()
   except Exception as e:
-    return 'Error:orderController:listOrders', 500
+    return jsonify({"Error": str(e)}), 500
 
 @orderBP.route("/api/orders/", methods = ["POST"])
 def createOrder():

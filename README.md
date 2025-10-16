@@ -1,91 +1,101 @@
-# flask-mongo-api
+# flask-mongo-api - Orders Backend
 
-Backend in Flask writed in Debian BookWorm
+Backend in Flask written in Debian BookWorm
 
-## Prerequisites
-Ensure you have the following installed:
- - [Python 3.x](https://www.python.org/downloads/)
- - [MongoDB](https://www.mongodb.com/docs/manual/installation/)
- - A mongo database named flask-mongo-api & order collection
+## 🔗 Project Components
 
-## Run Locally
+- **Backend** (This Repository):
+  - RESTful API
+  - Database management
+  - Log activity
 
-Clone the project
+## ⛁ Design Pattern
 
+### Layered Pattern
+
+![App](https://i.postimg.cc/zXpGBTpX/app.png)
+
+The application is contains 3 main layers and 1 parallel layer each with its own responsibility.
+
+- **Presentation Layer:**
+  - Controllers
+    
+- **Business Layer:**
+  - Business Logic
+  - Validations
+
+- **Persistence Layer:**
+  - Mongo database Access
+
+- **Loggin Layer:**
+  - Log business layer
+  - Log persistence layer 
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.x
+- Mongo Database
+- Virtual environment (recommended)
+- Postman (optional)
+
+### Installation
+
+1: Clone repository:
 ```bash
   git clone git@github.com:manoelbalam/flask-mongo-api.git
 ```
-
-Go to the project directory
+2: Go to the project directory
 
 ```bash
   cd flask-mongo-api
 ```
 
-Create a Virtual Environment
+3: Create a Virtual Environment
 
 ```bash
   python -m venv venv
 ```
 
-Activate the Environment
+4: Activate the Environment
 
 ```bash
-  source venv/bin/activate
+  source venv/bin/activate  # On Windows: `venv\Scripts\activate`
 ```
 
-Install Dependencies
+5: Install Dependencies
 
 ```bash
   pip install -r requirements.txt
 ```
 
-Start the server
+6: Start the server
 
 ```bash
-  python app.py
-```
-## API Reference
-
-#### Get all orders
-
-```http
-  curl -i -X 'GET' 'http://127.0.0.1:5000/api/orders/' -H 'Content-Type: applicaion/json'
+  python3 app.py
 ```
 
-#### Get order by id
+__WARNING__ :
+* mongodb daemon must be running in the OS.
+* mandatory a database named ``flask-mongo-api``
+* mandatory a collection named ``order``
 
-```http
-  curl -i -X 'GET' 'http://127.0.0.1:5000/api/orders/68efb402513bc61af848ccfdasas' -H 'Content-Type: applicaion/json'
-```
+You can explore the api by running : [http://localhost:5000/apidocs/](http://localhost:5000/apidocs/)
 
-#### Create Order
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `customer_name`      | `string` | **Required**. Name of the customer |
-
-```http
-  curl -i -X 'POST' 'http://127.0.0.1:5000/api/orders/' -H 'Content-Type: application/json' -d '{"customer_name":"customer_name_0"}'
-```
-
-#### Update Order
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `customer_name`      | `string` | **Required**. Name of the customer |
-
-```http
-  curl -i -X 'PATCH' 'http://127.0.0.1:5000/api/orders/68f00e0fd92ada1eb3775a32' -H 'Content-Type: application/json' -d '{"customer_name":"customer_name_0", "status":"Done4"}'
+## 📁 Project Structure
 
 ```
-
-#### Delete Order
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `order_id`      | `string` | **Required**. Name of the customer |
-
-```http
-  curl -i -X 'DELETE' 'http://127.0.0.1:5000/api/orders/68ef1de67664eef7dae6cfb7' -H 'Content-Type: applicaion/json'
+flask-mongo-api/                 # Backend code written in Flask
+├── app.py                       # Main Flask application file
+├── controllers/
+|   └── orderController.py       # Contains the API endpoints
+├── dbaccess/
+|   └── orderDBA.py              # Persist data into DB
+├── logic/
+|   └── orderLogic.py            # Data fields validationd and logic
+├── requirements.txt             # Project dependencies
+└── README.md                    # Project README file (this file)
 ```
+
+## 🔌 API Endpoints
