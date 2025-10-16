@@ -6,10 +6,12 @@ Backend in Flask written in Debian BookWorm
 
 ## Table of Contents
 
-1. [Project Components](#ProjectComponents)
-2. [Design Pattern](#design_pattern)
-3. [Project Structure](#project_structure)
-4. [API Endpoints](#APIEndpoints)
+1. [Project Components](#-project-components)
+2. [Design Pattern](#-design-pattern)
+3. [Getting Started](#-getting-started)
+4. [Project Structure](#-project-structure)
+5. [API Endpoints](#-api-endpoints)
+    - [Orders](#orders)
    
 ---
 
