@@ -4,7 +4,7 @@ Backend in Flask written in Debian BookWorm
 
 ## 🔗 Project Components
 
-- **Backend** (This Repository):
+- **Backend**:
   - RESTful API
   - Database management
   - Log activity
@@ -34,11 +34,10 @@ The application is contains 3 main layers and 1 parallel layer each with its own
 ## 🚀 Getting Started
 
 ### Prerequisites
-
-- Python 3.x
-- Mongo Database
+- [Python 3.x](https://www.python.org/downloads/)
+- [MongoDB](https://www.mongodb.com/docs/manual/installation/)
 - Virtual environment (recommended)
-- Postman (optional)
+- [Postman (optional)] (http://postman.com/)
 
 ### Installation
 
@@ -76,12 +75,12 @@ The application is contains 3 main layers and 1 parallel layer each with its own
   python3 app.py
 ```
 
+**Flask API** will run on: `http://127.0.0.1:5000`
+
 __WARNING__ :
 * mongodb daemon must be running in the OS.
 * mandatory a database named ``flask-mongo-api``
 * mandatory a collection named ``order``
-
-You can explore the api by running : [http://localhost:5000/apidocs/](http://localhost:5000/apidocs/)
 
 ## 📁 Project Structure
 
@@ -99,3 +98,28 @@ flask-mongo-api/                 # Backend code written in Flask
 ```
 
 ## 🔌 API Endpoints
+
+### Orders
+- `GET /api/orders`
+  - Get all orders
+
+  Example:
+
+  ```http
+  curl -i -X 'GET' 'http://127.0.0.1:5000/api/orders/' -H 'Content-Type: applicaion/json'
+  ```
+  Response:
+  ```http
+  Date: Thu, 16 Oct 2025 23:20:10 GMT
+  Content-Type: application/json
+  Content-Length: 94
+  Connection: close
+
+  [
+    {
+      "_id": "68f077cbe2684838baa87acd",
+      "customer_name": "customer_name",
+      "status": "inProgress"
+    }
+  ]
+  ```
