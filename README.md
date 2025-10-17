@@ -3,25 +3,27 @@
 Backend in Flask written in Debian BookWorm
 
 ---
-
 ## Table of Contents
 
 1. [Project Components](#-project-components)
 2. [Design Pattern](#-design-pattern)
+    - [Layered Pattern](#layered-pattern)
 3. [Getting Started](#-getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
 4. [Project Structure](#-project-structure)
 5. [API Endpoints](#-api-endpoints)
     - [Orders](#orders)
-   
----
+6. [Testing the API](#-testing-the-api)
 
+---
 ## 🔗 Project Components
 
 - **Backend**:
   - RESTful API
   - Database management
   - Log activity
-
+---
 ## ⛁ Design Pattern
 
 ### Layered Pattern
@@ -43,14 +45,14 @@ The application is contains 3 main layers and 1 parallel layer each with its own
 - **Loggin Layer:**
   - Log business layer
   - Log persistence layer 
-
+---
 ## 🚀 Getting Started
 
 ### Prerequisites
 - [Python 3.x](https://www.python.org/downloads/)
 - [MongoDB](https://www.mongodb.com/docs/manual/installation/)
 - Virtual environment (recommended)
-- [Postman (optional)] (http://postman.com/)
+- [Postman (optional)](http://postman.com/)
 
 ### Installation
 
@@ -94,7 +96,7 @@ __WARNING__ :
 * mongodb daemon must be running in the OS.
 * mandatory a database named ``flask-mongo-api``
 * mandatory a collection named ``order``
-
+---
 ## 📁 Project Structure
 
 ```
@@ -109,7 +111,7 @@ flask-mongo-api/                 # Backend code written in Flask
 ├── requirements.txt             # Project dependencies
 └── README.md                    # Project README file (this file)
 ```
-
+---
 ## 🔌 API Endpoints
 
 ### Orders
@@ -136,3 +138,14 @@ flask-mongo-api/                 # Backend code written in Flask
     }
   ]
   ```
+---
+## ⚙️ Testing the API
+
+You can test the API using the following methods:
+
+1. **Unit Testing (Open API)**:
+  **Flasgger UI** will run on: `http://127.0.0.1:5000`
+   
+2. **Postman / cURL**: Use these tools to manually send HTTP requests to the Flask API and verify the responses.
+
+---
