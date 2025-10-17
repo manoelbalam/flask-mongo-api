@@ -14,8 +14,8 @@ Backend in Flask written in Debian BookWorm
 4. [Project Structure](#-project-structure)
 5. [API Endpoints](#-api-endpoints)
     - [Orders](#orders)
-6. [Testing the API](#-testing-the-api)
-7. [Development](#-development)
+6. [Testing the API](#%EF%B8%8F-testing-the-api)
+7. [Development](#%EF%B8%8F-development)
     - [Database Schema](#database-schema)
 
 --- 
