@@ -92,10 +92,10 @@ The application is contains 3 main layers and 1 parallel layer each with its own
 
 **Flask API** will run on: `http://127.0.0.1:5000`
 
-__WARNING__ :
-* mongodb daemon must be running in the OS.
-* mandatory a database named ``flask-mongo-api``
-* mandatory a collection named ``order``
+> NOTE: mongo daemon must be running in the OS.
+
+> NOTE: mandatory a database named ``flask-mongo-api`` and a collection named ``order``
+
 ---
 ## 📁 Project Structure
 
@@ -115,7 +115,7 @@ flask-mongo-api/                 # Backend code written in Flask
 ## 🔌 API Endpoints
 
 ### Orders
-- `GET /api/orders`
+- **GET** `/api/orders/`
   - Get all orders
 
   Example:
@@ -138,13 +138,117 @@ flask-mongo-api/                 # Backend code written in Flask
     }
   ]
   ```
+- **POST** `/api/orders/`
+  - Create a new order
+  - Body Parameters:
+    - `customer_name`: Name of the customer
+
+  Example:
+
+  ```http
+  curl -i -X 'POST' 'http://127.0.0.1:5000/api/orders/' -H 'Content-Type: application/json' -d '{"customer_name":"customer_name"}'
+  ```
+  Response:
+  ```http
+  HTTP/1.1 201 CREATED
+  Server: Werkzeug/3.1.3 Python/3.11.2
+  Date: Fri, 17 Oct 2025 00:26:25 GMT
+  Content-Type: application/json
+  Content-Length: 83
+  Connection: close
+
+  {
+    "Message": "Order created successfully!",
+    "id": "68f18d313446633c95bed359"
+  }
+  ```
+
+- **DELETE** `/api/orders/<string:order_id>`
+
+  - Delete an order by order_id
+   - Query Parameters:
+    - `string:order_id`: id of the order 
+
+  Example:
+
+  ```http
+  curl -i -X 'DELETE' 'http://127.0.0.1:5000/api/orders/68f18d313446633c95bed359' -H 'Content-Type: applicaion/json'
+  ```
+  Response:
+  ```http
+  HTTP/1.1 200 OK
+  Server: Werkzeug/3.1.3 Python/3.11.2
+  Date: Fri, 17 Oct 2025 00:37:05 GMT
+  Content-Type: application/json
+  Content-Length: 46
+  Connection: close
+
+  {
+    "Message": "Order deleted successfully"
+  }
+  ```
+
+- **GET** `/api/orders/<string:order_id>`
+
+  - Retrieve an order by order_id
+  - Query Parameters:
+    - `string:order_id`: id of the order
+
+  Example:
+
+  ```http
+  curl -i -X 'GET' 'http://127.0.0.1:5000/api/orders/68f18d313446633c95bed359' -H 'Content-Type: applicaion/json'
+  ```
+  Response:
+  ```http
+  HTTP/1.1 200 OK
+  Server: Werkzeug/3.1.3 Python/3.11.2
+  Date: Fri, 17 Oct 2025 00:31:10 GMT
+  Content-Type: application/json
+  Content-Length: 102
+  Connection: close
+
+  {
+    "_id": "68f18d313446633c95bed359",
+    "customer_name": "customer_name",
+    "status": "inProgress"
+  }
+  ```
+
+- **PATCH** `/api/orders/<string:order_id>`
+
+  - Update an order by order_id
+  - Query Parameters:
+    - `string:order_id`: id of the order 
+  - Body Parameters:
+    - `string:status`: Filter by location
+  Example:
+
+  ```http
+  curl -i -X 'PATCH' 'http://127.0.0.1:5000/api/orders/68f18d313446633c95bed359' -H 'Content-Type: application/json' -d '{"customer_name":"customer_name_updated", "status":"Done"}'
+  ```
+  Response:
+  ```http
+  HTTP/1.1 200 OK
+  Server: Werkzeug/3.1.3 Python/3.11.2
+  Date: Fri, 17 Oct 2025 00:33:24 GMT
+  Content-Type: application/json
+  Content-Length: 104
+  Connection: close
+
+  {
+    "_id": "68f18d313446633c95bed359",
+    "customer_name": "customer_name_updated",
+    "status": "Done"
+  }
+  ```
+
 ---
 ## ⚙️ Testing the API
 
 You can test the API using the following methods:
 
-1. **Unit Testing (Open API)**:
-  **Flasgger UI** will run on: `http://127.0.0.1:5000`
+1. **Unit Testing (Open API)**:  **_Flasgger UI_** will run on: `http://localhost:5000/apidocs/`
    
 2. **Postman / cURL**: Use these tools to manually send HTTP requests to the Flask API and verify the responses.
 
