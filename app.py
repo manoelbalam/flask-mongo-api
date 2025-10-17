@@ -5,50 +5,50 @@ from logging.config import dictConfig
 from flask.logging import default_handler
 
 dictConfig({
-    'version': 1,
-    'formatters': {
-        'console': {
-            'format': '%(message)s'
-        },
-        'default': {
-            'format': '[%(asctime)s] %(module)s: %(message)s'
-        },
+  'version': 1,
+  'formatters': {
+    'console': {
+        'format': '%(message)s'
     },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'stream': 'ext://sys.stdout',
-            'formatter': 'console',
-        },
-        'info': {
-            'class' : 'logging.FileHandler',
-            'formatter': 'default',
-            'filename' : 'logs/info.log',
-            'level'    : 'DEBUG'
-        },
-        'error': {
-            'class' : 'logging.FileHandler',
-            'formatter': 'default',
-            'filename' : 'logs/error.log',
-            'level'    : 'ERROR'
-        }
+    'default': {
+        'format': '[%(asctime)s] %(module)s: %(message)s'
     },
-    'root': {
-        'level': 'INFO',
-        'handlers': ['console']
+  },
+  'handlers': {
+    'console': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://sys.stdout',
+        'formatter': 'console',
     },
-    "loggers": {
-        "info_log": {
-            "level": "INFO",
-            "handlers": ["info"],
-            "propagate": False,
-        },
-        "error_log": {
-            "level": "ERROR",
-            "handlers": ["error"],
-            "propagate": False,
-        }
+    'info': {
+        'class' : 'logging.FileHandler',
+        'formatter': 'default',
+        'filename' : 'logs/info.log',
+        'level'    : 'DEBUG'
     },
+    'error': {
+        'class' : 'logging.FileHandler',
+        'formatter': 'default',
+        'filename' : 'logs/error.log',
+        'level'    : 'ERROR'
+    }
+  },
+  'root': {
+      'level': 'INFO',
+      'handlers': ['console']
+  },
+  "loggers": {
+    "info_log": {
+      "level": "INFO",
+      "handlers": ["info"],
+      "propagate": False,
+    },
+    "error_log": {
+      "level": "ERROR",
+      "handlers": ["error"],
+      "propagate": False,
+    }
+  },
 })
 
 app = Flask(__name__)
