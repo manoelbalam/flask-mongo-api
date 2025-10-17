@@ -15,8 +15,9 @@ Backend in Flask written in Debian BookWorm
 5. [API Endpoints](#-api-endpoints)
     - [Orders](#orders)
 6. [Testing the API](#-testing-the-api)
+7. [Development](#-Development)
 
----
+--- 
 ## 🔗 Project Components
 
 - **Backend**:
@@ -141,7 +142,7 @@ flask-mongo-api/                 # Backend code written in Flask
 - **POST** `/api/orders/`
   - Create a new order
   - Body Parameters:
-    - `customer_name`: Name of the customer
+    - `String:customer_name`: Name of the customer
 
   Example:
 
@@ -167,7 +168,7 @@ flask-mongo-api/                 # Backend code written in Flask
 
   - Delete an order by order_id
    - Query Parameters:
-    - `string:order_id`: id of the order 
+    - `ObjectId:order_id`: It must be a 12-byte input or a 24-character hex string 
 
   Example:
 
@@ -192,7 +193,7 @@ flask-mongo-api/                 # Backend code written in Flask
 
   - Retrieve an order by order_id
   - Query Parameters:
-    - `string:order_id`: id of the order
+    - `ObjectId:order_id`: It must be a 12-byte input or a 24-character hex string
 
   Example:
 
@@ -219,9 +220,11 @@ flask-mongo-api/                 # Backend code written in Flask
 
   - Update an order by order_id
   - Query Parameters:
-    - `string:order_id`: id of the order 
+    - `ObjectId:order_id`: It must be a 12-byte input or a 24-character hex string 
   - Body Parameters:
-    - `string:status`: Filter by location
+    - `String:customer_name`: Name of the customer
+    - `String:status`: Status of the order could be ["inProgress", "Done", "Delivered"]
+
   Example:
 
   ```http
@@ -253,3 +256,11 @@ You can test the API using the following methods:
 2. **Postman / cURL**: Use these tools to manually send HTTP requests to the Flask API and verify the responses.
 
 ---
+## 🛠️ Development
+
+### Database Schema
+
+The **order** model includes:
+- `_id`: ObjectId (Primary Key)
+- `customer_name`: String (Required)
+- `status`: String (Required)
