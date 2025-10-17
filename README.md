@@ -110,6 +110,9 @@ flask-mongo-api/                 # Backend code written in Flask
 |   └── orderDBA.py              # Persist data into DB
 ├── logic/
 |   └── orderLogic.py            # Data fields validationd and logic
+├── logs/
+|   └── info.log                 # Contains success information
+|   └── error.log                # Contains erro information
 ├── requirements.txt             # Project dependencies
 └── README.md                    # Project README file (this file)
 ```
