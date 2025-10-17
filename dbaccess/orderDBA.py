@@ -2,7 +2,6 @@ from bson import ObjectId
 from flask import jsonify
 from pymongo import MongoClient
 import logging
-import pdb
 
 error_log = logging.getLogger("error_log")
 info_log = logging.getLogger("info_log")
